@@ -6,49 +6,57 @@
       "_template": "doc"
     },
     {
-      "title": "Tutorial Basics",
+      "document": "docs/Getting Started/getting-started.mdx",
+      "_template": "doc"
+    },
+    {
+      "document": "docs/on-premise.mdx",
+      "_template": "doc"
+    },
+    {
+      "title": "Mobile Development",
       "link": "generated",
       "items": [
         {
-          "document": "docs/tutorial-basics/create-a-page.mdx",
+          "document": "docs/Mobile Development/ekycid-for-android.mdx",
           "_template": "doc"
         },
         {
-          "document": "docs/tutorial-basics/create-a-document.mdx",
+          "document": "docs/Mobile Development/ekycid-for-flutter.mdx",
           "_template": "doc"
         },
         {
-          "document": "docs/tutorial-basics/create-a-blog-post.mdx",
+          "document": "docs/Mobile Development/ekycid-for-react-native.mdx",
           "_template": "doc"
         },
         {
-          "document": "docs/tutorial-basics/deploy-your-site.mdx",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/tutorial-basics/congratulations.mdx",
+          "document": "docs/Mobile Development/ekycid-for-ios.mdx",
           "_template": "doc"
         }
       ],
       "_template": "category"
     },
     {
-      "title": "Tutorial - Extras",
-      "link": "generated",
+      "title": "Server Development",
+      "link": "none",
       "items": [
         {
-          "document": "docs/tutorial-extras/manage-docs-versions.mdx",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/tutorial-extras/translate-your-site.mdx",
-          "_template": "doc"
+          "title": "Node SDK",
+          "link": "none",
+          "items": [
+            {
+              "document": "docs/fastify-routers-plugins.mdx",
+              "label": "",
+              "_template": "doc"
+            }
+          ],
+          "_template": "category"
         }
       ],
       "_template": "category"
     },
     {
-      "title": "Nested Link",
+      "title": "API Reference ",
       "link": "none",
       "items": [
         {
@@ -60,7 +68,7 @@
               "link": "none",
               "items": [
                 {
-                  "document": "docs/test-page.mdx",
+                  "document": "docs/fastify-routers-plugins.mdx",
                   "label": "",
                   "_template": "doc"
                 }
@@ -72,11 +80,6 @@
         }
       ],
       "_template": "category"
-    },
-    {
-      "title": "Trouble Shooting",
-      "href": "https://tina.io/",
-      "_template": "link"
     }
   ]
 }

@@ -107,23 +107,36 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/',
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: docusaurusData.url + "/admin/#/collections/doc",
         },
-        blog: {
-          showReadingTime: true,
-          editUrl: docusaurusData.url + "/admin/#/collections/post",
-        },
+        // blog: {
+        //   showReadingTime: true,
+        //   editUrl: docusaurusData.url + "/admin/#/collections/post",
+        // },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
       }),
     ],
   ],
-
+ 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      docs: {
+        sidebar: {
+          autoCollapseCategories: true,
+          hideable: true,
+        },
+      },
+      algolia: {
+        apiKey: " ",
+        indexName: " ",
+        contextualSearch: true,
+        appId: "CQPHZC0WAW"
+      },
       navbar: {
         title: docusaurusData.title || "",
         logo: {
@@ -133,6 +146,9 @@ const config = {
           src: docusaurusData?.logo?.src
             ? docusaurusData?.logo?.src
             : "img/logo.svg",
+          srcDark : docusaurusData?.logo?.srcDark
+          ? docusaurusData?.logo?.srcDark
+          : "img/logo.svg",
         },
         items: docusaurusData.navbar.map((item) => {
           return formatNavbarItem(item);

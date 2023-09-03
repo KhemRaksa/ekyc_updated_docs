@@ -743,8 +743,57 @@ const HomepageCollection = {
   description:
     "To see settings changes reflected on your site, you must restart the Tina CLI after saving changes (local development only).",
   path: "config/homepage",
+  // format: "json",
+  // ui: {
+  //   allowedActions: {
+  //     create: false,
+  //     delete: false,
+  //   },
+  // },
+  // fields: [
+  //   {
+  //     type: "string",
+  //     name: "_warning",
+  //     ui: {
+  //       component: () => {
+  //         return <RestartWarning />;
+  //       },
+  //     },
+  //   },
+  //   {
+  //     type: "string",
+  //     label: "Label",
+  //     name: "label",
+  //     required: true,
+  //     isTitle: true,
+  //     ui: {
+  //       component: "hidden",
+  //     },
+  //   },
+  //   {
+  //     type: "string",
+  //     name: "title",
+  //     label: "Title",
+  //   },
+  //   {
+  //     type: "string",
+  //     name: "description",
+  //     label: "Description",
+  //   },
+  //   {
+  //     type: "object",
+  //     list: true,
+  //     name: "blocks",
+  //     label: "Blocks",
+  //     templates: [HeroBlockTemplate, FeaturesBlockTemplate],
+  //   },
+  // ],
+  // name: "sidebar",
+  // label: "Docs Sidebar",
+  // path: "config/sidebar",
   format: "json",
   ui: {
+    global: true,
     allowedActions: {
       create: false,
       delete: false,
@@ -770,23 +819,7 @@ const HomepageCollection = {
         component: "hidden",
       },
     },
-    {
-      type: "string",
-      name: "title",
-      label: "Title",
-    },
-    {
-      type: "string",
-      name: "description",
-      label: "Description",
-    },
-    {
-      type: "object",
-      list: true,
-      name: "blocks",
-      label: "Blocks",
-      templates: [HeroBlockTemplate, FeaturesBlockTemplate],
-    },
+    SidebarItemsField,
   ],
 };
 

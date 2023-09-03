@@ -1,12 +1,6 @@
 {
-  "label": "Settings",
   "navbar": [
-    {
-      "label": "Docs",
-      "link": "doc",
-      "docLink": "docs/intro.mdx",
-      "position": "left"
-    },   
+  
     {
       "label": " GitHub",
       "link": "external",
@@ -16,25 +10,17 @@
   ],
   "logo": {
     "alt": "EKYC Logo",
-    "src": "/img/ekyc-frame-dark-01.png"
+    "src": "/img/ekyc-frame-dark-01.png",
+    "srcDark" : "/img/ekyc-frame-light-01.png"
   },
   "title": "",
   "footer": {
     "style": "dark",
-    "links": [
-      {
-        "title": "Docs",
-        "items": [
-          {
-            "label": " GitHub",
-            "link": "external",
-            "externalLink": "https://github.com/EKYCSolutions",
-            "position": "right"
-          }
-        ]
-      } 
-    ],
-    "copyright": "© 2022 EKYC Solutions Co, Ltd. All rights reserved"
+    "links": [{
+        "label": "GitHub",
+        "href": "https://github.com/EKYCSolutions"   
+    }],
+    "copyright": "© 2022 EKYC Solutions Co, Ltd. All rights reserved."
   },
   "url": "https://tinasaurus.vercel.app/"
 }

@@ -1,0 +1,5 @@
+.code-block-right {
+    float: right;
+    margin-left: 20px; /* Adjust this value to control the space between text and code */
+    clear: right; /* Clear the float to prevent text from wrapping around it */
+  }
