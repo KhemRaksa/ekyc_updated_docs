@@ -22,22 +22,22 @@ EkycID can:
 
 This Flutter SDK is a wrapper around our Native SDK ([Android](https://github.com/EKYCSolutions/ekyc-id-android) & [iOS](https://github.com/EKYCSolutions/ekyc-id-ios)).
 
-## 1. Requirements
+#### 1. Requirements
 
-### iOS
+##### iOS
 - Minimum iOS Deployment Target: 10.0
 - Xcode 13 or newer
 - Swift 5
 - EkycID only supports 64-bit architectures (x86_64 and arm64).
 
-### Android
+#### Android
 - minSdkVersion: 21
 - targetSdkVersion: 32
 - compileSdkVersion 32
 
-## 2. Installation
+#### 2. Installation
 
-### 2.1. Flutter Setup
+##### 2.1. Flutter Setup
 To use this plugin, add `ekyc_id_flutter` as a dependency in your pubspec.yaml file.
 ```yaml
 dependencies:
@@ -45,7 +45,7 @@ dependencies:
   ekyc_id_flutter:
 ```
 
-### 2.2 iOS Setup
+##### 2.2 iOS Setup
 **Step 1:** On iOS add the following to your Info.plist
 ```xml
 <!-- Camera Access -->
@@ -85,10 +85,10 @@ post_install do |installer|
 end
 ```
 
-### 2.3. Android Setup
+##### 2.3. Android Setup
 No extra setup is needed.
 
-## 3. Usage
+##### 3. Usage
 
 **Step 1:** Setup URL to server.
 
@@ -194,6 +194,6 @@ Future<void> onKYCCompleted({
 
 ```
 
-## 4. License
+##### 4. License
 
 © 2022 EKYC Solutions Co, Ltd. All rights reserved.
