@@ -5,54 +5,233 @@ title:  EkycID SDK For Android
 
 # EkycID SDK For Android
 
-Docusaurus can manage multiple versions of your docs.
-
-#### Create a docs version
-
-Release a version 1.0 of your project:
+![](https://img.shields.io/badge/platform-android-blue) ![](https://img.shields.io/github/v/tag/EKYCSolutions/ekyc-id-android?label=version)
 
 
-```bash
-npm run docusaurus docs:version 1.0
+The EkycID Android SDK lets you build a fantastic OCR and Face Recognition experienced in your Android app.
+
+With one quick scan, your users will be able to extract information from thier identity cards, passports, driver licenses, license plate, vehicle registration, covid-19 vaccinate card, and any other document by government-issued.
+
+
+EkycID is:
+* Easy to integrate into existing ecosystems and solutions through the use of SDKs that supported both native and hybrid applications.
+* Better for user experience being that the document detections and liveness checks are done directly offline on the device.
+* Great for cutting down operations cost and increasing efficiency by decreasing reliance on human labor and time needed for manual data entry. 
+
+
+EkycID can:
+* Extract information from identity documents through document recognition & OCR.
+* Verify whether an individual is real or fake through liveness detection, and face recognition. 
+* Verify the authenticity of the identity documents by combining the power of document detection, OCR, liveness detection, and face recognition. 
+
+
+To see all of these features at work download our free demo app:
+
+<a href='https://play.google.com/store/apps/details?id=com.ekyc.demo_app&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="300" 
+     height="100"/>
+</a>
+
+# 1. Requirements
+- minSdkVersion: 21
+- targetSdkVersion: 33
+- compileSdkVersion: 33
+
+# 2. Installation
+**Step 1:** Add the JitPack repository to your root build.gradle at the end of repositories.
+
+```gradle
+allprojects {
+     repositories {
+          ...
+          maven { url 'https://jitpack.io' }
+     }
+}
+```
+**Step 2:** Add the dependency.
+```gradle
+dependencies {
+     implementation 'com.github.EKYCSolutions:ekyc-id-android:1.0.12'
+}
 ```
 
+# 3. Usage
 
-The `docs` folder is copied into `versioned_docs/version-1.0` and `versions.json` is created.
+## 3.1. Document Scanner
 
-Your docs now have 2 versions:
+**Step 1:** Initialize `Initializer` class and called `initializer.start()` in onResume.
+```kotlin
+class MainActivity : AppCompatActivity() {
+    val initializer = Initializer(this)
 
-- `1.0` at `http://localhost:3000/docs/` for the version 1.0 docs
-- `current` at `http://localhost:3000/docs/next/` for the **upcoming, unreleased docs**
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
-#### Add a Version Dropdown
-
-To navigate seamlessly across versions, add a version dropdown.
-
-Modify the `docusaurus.config.js` file:
-
-```js title="docusaurus.config.js"
-module.exports = {
-  themeConfig: {
-    navbar: {
-      items: [
-        // highlight-start
-        {
-          type: "docsVersionDropdown",
-        },
-        // highlight-end
-      ],
-    },
-  },
-};
+    @RequiresApi(Build.VERSION_CODES.N)
+    override fun onResume() {
+        super.onResume()
+        
+        // Start initializer here
+        initializer.start {
+            
+        }
+    }
+}
 ```
 
-The docs version dropdown appears in your navbar:
+**Step 2:** Add DocumentScannerCameraView to your `layout.xml`
+```xml
 
+<com.ekycsolutions.ekycid.documentscanner.DocumentScannerCameraView
+      android:id="@+id/documentScannerCameraView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
 
+```
 
-#### Update an existing version
+**Step 3:** Initialize `DocumentScannerCameraView` and implements `DocumentScannerEventListener`.
+```kotlin
+class MainActivity : AppCompatActivity(), DocumentScannerEventListener {
+    val initializer = Initializer(this)
 
-It is possible to edit versioned docs in their respective folder:
+    lateinit var documentScannerView: DocumentScannerCameraView
 
-- `versioned_docs/version-1.0/hello.md` updates `http://localhost:3000/docs/hello`
-- `docs/hello.md` updates `http://localhost:3000/docs/next/hello`
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    override fun onResume() {
+        super.onResume()
+        initializer.start {
+            runOnUiThread {
+                setContentView(R.layout.activity_main)
+                documentScannerView = findViewById(R.id.documentScannerView)
+                documentScannerView.addListener(this)
+                documentScannerView.setWhiteList(arrayListOf(ObjectDetectionObjectType.NATIONAL_ID_0.name))
+                documentScannerView.start()
+            }
+        }
+    }
+
+    override fun onInitialize() {
+        Log.d(TAG, "onInitialize")
+    }
+
+    override fun onFrame(frameStatus: FrameStatus) {
+        if (frameStatus != FrameStatus.PROCESSING) {
+            Log.d(TAG, "onFrame: $frameStatus")
+        }
+    }
+
+    override fun onDetection(detection: DocumentScannerResult) {
+        Log.d(TAG, "onDetection")
+    }
+}
+```
+
+## 3.2. Liveness Detection
+
+**Step 1:** Initialize `Initializer` class and called `initializer.start()` in onResume.
+```kotlin
+class MainActivity : AppCompatActivity() {
+    val initializer = Initializer(this)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    override fun onResume() {
+        super.onResume()
+        
+        // Start initializer here
+        initializer.start {
+            
+        }
+    }
+}
+```
+
+**Step 2:** Add DocumentScannerCameraView to your `layout.xml`
+```xml
+
+<com.ekycsolutions.ekycid.livenessDetection.LivenessDetectionCameraView
+      android:id="@+id/livenessDetectionCameraView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
+
+```
+
+**Step 3:** Initialize `LivenessDetectionCameraView` and implements `LivenessDetectionEventListener`.
+```kotlin
+class MainActivity : AppCompatActivity(), LivenessDetectionEventListener {
+    val initializer = Initializer(this)
+
+    lateinit var livenessDetectionCameraView: LivenessDetectionCameraView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    override fun onResume() {
+        super.onResume()
+        initializer.start {
+            runOnUiThread {
+                setContentView(R.layout.activity_main)
+                livenessDetectionCameraView = findViewById(R.id.documentScannerView)
+                livenessDetectionCameraView.addListener(this)
+                livenessDetectionCameraView.setOptions(
+                    LivenessDetectionOptions(
+                         arrayListOf(LivenessPrompt.LOOK_LEFT, LivenessPrompt.LOOK_RIGHT, LivenessPrompt.BLINKING)
+                    )
+                )
+                livenessDetectionCameraView.start()
+            }
+        }
+    }
+
+    override fun onInitialize() {
+        Log.d(TAG, "onInitialize")
+    }
+
+    override fun onFrame(frameStatus: FrameStatus) {
+        if (frameStatus != FrameStatus.PROCESSING) {
+            Log.d(TAG, "onFrame: $frameStatus")
+        }
+    }
+
+    override fun onPromptCompleted(completedPromptIndex: Int, success: Boolean: progress: Float) {
+        Log.d(TAG, "onPromptCompleted")
+    }
+    
+    override fun onAllPromptsCompleted(detection: LivenessDetectionResult) {
+        Log.d(TAG, "onAllPromptsCompleted")
+    }
+    
+    override fun onFocus() {
+        Log.d(TAG, "onFocus")
+    }
+    
+    override fun onFocusDropped() {
+        Log.d(TAG, "onFocusDropped")
+    }
+    
+    override fun onCountDownChanged(current: Int, max: Int) {
+        Log.d(TAG, "onCountDownChanged")
+    }
+}
+```
+
+## 3.3. Perform Face Compare and OCR
+
+To perform face compare and ocr, you can call your server that integrated with our NodeSDK to get face compare score and ocr response respectively.
+
+# 4. Contact
+<p>For any other questions, feel free to contact us at  
+  <a href="https://ekycsolutions.com/"> ekycsolutions.com</a>
+</p>
+
+# 5. License
+<p>© 2022 EKYC Solutions Co, Ltd. All rights reserved.</p>
