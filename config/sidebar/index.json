@@ -48,6 +48,57 @@
       "_template": "category"
     },
     {
+      "title": "Core Modules",
+      "link": "generated",
+      "items": [
+        {
+          "title": "Document Scanner",
+          "link": "none",
+          "items": [
+            {
+              "document": "docs/Core Modules/Document Scanner/Overview.mdx",
+              "label": "",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/Core Modules/Document Scanner/Supported Documents.mdx",
+              "label": "",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/Core Modules/Document Scanner/Usage.mdx",
+              "label": "",
+              "_template": "doc"
+            }
+          ],
+          "_template": "category"
+        },
+        {
+          "title": "Liveness Detections",
+          "link": "none",
+          "items": [
+            {
+              "document": "docs/Core Modules/Liveness Detection/Overview.mdx",
+              "label": "",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/Core Modules/Liveness Detection/Supported Prompts.mdx",
+              "label": "",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/Core Modules/Liveness Detection/Usage.mdx",
+              "label": "",
+              "_template": "doc"
+            }
+          ],
+          "_template": "category"
+        }
+      ],
+      "_template": "category"
+    },
+    {
       "title": "Server Development",
       "link": "none",
       "items": [
